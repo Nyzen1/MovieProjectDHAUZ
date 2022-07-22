@@ -1,5 +1,7 @@
 # MovieProjectDHAUZ
 
+--Applicação em donet 6.0
+
 --Clonar projeto
 
 --Entrar na pasta do projeto pelo terminal (cd .\MovieProjectDHAUZ\)
