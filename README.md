@@ -20,3 +20,7 @@
   
   GET - List all movies
   
+  O parâmetro GetDetailsImdbToEmptyFilds caso seja selecionado true e não for inserida nenhuma informação manual, irá inserir: Nome, Description, Genre, RealeseDate baseado nos dados do retorno do OMDB.
+  
+  Caso o mesmo esteja false, tera que preencher todas as informações.
+  
