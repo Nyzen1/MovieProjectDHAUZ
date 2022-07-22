@@ -9,7 +9,7 @@
         public DateTime? ReleaseDate { get; set; }
         public string Genre { get; set; }
         public bool Watched { get; set; }
-        public float UserScore { get; set; }
+        public float? UserScore { get; set; }
         public bool GetDetailsImdbToEmptyFilds { get; set; }
 
     }

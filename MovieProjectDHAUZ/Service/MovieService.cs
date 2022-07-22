@@ -41,20 +41,38 @@ namespace MovieProjectDHAUZ.Service
                 }
             }
 
-
             var movie = new MovieDataModel(movieDto);
             var createdMovie = await _movieEntityRepository.AddMovie(movie);
+
             try
             {
                 await _movieEntityRepository.SaveChanges();
                 return new MovieResponseDto(createdMovie, movieDetails.Ratings);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw new Exception("Não foi possível inserir o filme, tente novamente e revise os dados");
-
             }
         }
 
+        public async Task<IEnumerable<MovieDataModel>> GetAllMovies()
+        {
+            var listMovies = await _movieEntityRepository.GetAllMovies();
+            return listMovies;
+        }
+
+        public async Task<MovieDataModel> UpdateMovie(int id, MovieRequestDto movieData)
+        {
+            var updateMovie = await _movieEntityRepository.UpdateMovie(id, movieData);
+            await _movieEntityRepository.SaveChanges();
+            return updateMovie;
+        }
+
+        public async Task<bool> DeleteMovie(int id)
+        {
+            var deleteMovie = await _movieEntityRepository.DeleteMovie(id);
+            await _movieEntityRepository.SaveChanges();
+            return deleteMovie;
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace MovieProjectDHAUZ.DataModel
             ReleaseDate = request.ReleaseDate ?? DateTime.Now;
             Genre = request.Genre;
             Watched = request.Watched;
-            UserScore = request.UserScore;
+            UserScore = request.UserScore ?? 0;
         }
 
         public int Id { get; set; }

@@ -1,4 +1,5 @@
 ﻿using MovieProjectDHAUZ.DataModel;
+using MovieProjectDHAUZ.DTOs.Request;
 
 namespace MovieProjectDHAUZ.Repository.Interface
 {
@@ -6,5 +7,8 @@ namespace MovieProjectDHAUZ.Repository.Interface
     {
         Task SaveChanges();
         Task<MovieDataModel> AddMovie(MovieDataModel movie);
+        Task<IEnumerable<MovieDataModel>> GetAllMovies();
+        Task<MovieDataModel> UpdateMovie(int id, MovieRequestDto movieData);
+        Task<bool> DeleteMovie(int id);
     }
 }
