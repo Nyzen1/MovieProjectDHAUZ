@@ -35,7 +35,7 @@ namespace MovieProjectDHAUZ.Controllers
             return NotFound();
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, MovieRequestDto movieDto)
         {
             var updatedMovie = await _movieService.UpdateMovie(id, movieDto);
@@ -46,7 +46,7 @@ namespace MovieProjectDHAUZ.Controllers
             return new OkObjectResult(updatedMovie);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             if (await _movieService.DeleteMovie(id))
