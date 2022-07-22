@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MovieProjectDHAUZ.Context.Mapping;
 using MovieProjectDHAUZ.DataModel;
+using MovieProjectDHAUZ.DTOs.Configuration;
 
 namespace Microsoft.EntityFrameworkCore
 {
@@ -25,19 +26,19 @@ namespace MovieProjectDHAUZ.Context
 {
     public class MovieContext : DbContext
     {
-        public MovieContext()
+        private readonly ConfigurationDto _config;
+        public MovieContext(ConfigurationDto config)
         {
-
+            _config = config;
         }
 
         public MovieContext(DbContextOptions<MovieContext> dbContext) : base(dbContext)
         {
-
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-V65FJH3;Initial Catalog= MovieProject;Integrated Security=False;User ID=sa;Password=Mudar@123");
+            optionsBuilder.UseSqlServer(_config.ConnectionStrings.MoviesDb);
 
         }
 

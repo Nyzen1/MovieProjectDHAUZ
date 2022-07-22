@@ -1,4 +1,5 @@
 ﻿using MovieProjectDHAUZ.DataModel;
+using MovieProjectDHAUZ.DTOs.Configuration;
 using MovieProjectDHAUZ.DTOs.Request;
 using MovieProjectDHAUZ.DTOs.Response;
 using MovieProjectDHAUZ.Infra;
@@ -11,10 +12,10 @@ namespace MovieProjectDHAUZ.Service
     {
         private readonly IMovieEntityRepository _movieEntityRepository;
         private readonly RestOmdb _rest;
-        public MovieService(IMovieEntityRepository movieEntityRepository)
+        public MovieService(IMovieEntityRepository movieEntityRepository, ConfigurationDto config)
         {
             _movieEntityRepository = movieEntityRepository;
-            _rest = new RestOmdb("http://www.omdbapi.com/");
+            _rest = new RestOmdb(config.OmdBaseUrl, config.OmdbApiKey);
         }
 
         public async Task<MovieResponseDto> Add(MovieRequestDto movieDto)
